@@ -1,1 +1,3 @@
-# loveLetter--wechat
+# loveLetter--wechat 前端部分代码 不含后台交互代码
+#请在移动端打开
+#原适配浏览器：微信浏览器
