@@ -1,0 +1,263 @@
+html,body{
+    width: 100%;
+    height: 100%;
+}
+p,input{
+    color: black;
+    font-family:"MicrosoftYaHei";
+    font-size: 0.5em;
+    line-height: 30px;
+}
+
+#postmark{
+    position: relative;
+    right: 10%;
+    width: 50%;
+    float: right;
+}
+.contain{
+    font-size: 50px;
+}
+.page{
+    background: url('../images/bg.jpg')
+}
+.page0 p{
+    margin-bottom: 20px;
+}
+p{
+    text-align: center;
+}
+
+#page0contain>img{
+    display: block;
+    margin: auto;
+}
+#block{
+    height: 40%;
+    opacity: 1;
+    width: 200px;
+}
+
+#page1line1{
+    opacity: 0;
+    -webkit-animation: Render 3.8s;
+    animation: Render 3.8s;
+
+}
+#page1line2{
+    opacity: 0;
+    -webkit-animation: Render 3s;
+    animation: Render 3s;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+#rose{
+    height: 30%;
+    width: auto;
+    margin: 5% auto;
+    opacity: 0;
+    -webkit-animation: R3ender 3.8s;
+    animation: R3ender 3.8s;
+    -webkit-animation-delay: 9.5s;
+    animation-delay: 9.6s;
+}
+
+#imgcontainer{
+   position:absolute;
+   top:40%;
+   width: 100%;
+   height: 40%;
+}
+.page2element{
+    display:block;
+    opacity: 0;
+}
+#page2line1{
+    -webkit-animation: R2ender 3.8s;
+    animation: R2ender 3.8s;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+    margin-bottom: 2%;
+}
+#page2line2{
+    -webkit-animation: R2ender 3.8s;
+    animation: R2ender 3.8s;
+    -webkit-animation-delay: 2.5s;
+    animation-delay: 2.5s;
+    margin-bottom: 2%;
+}
+#page2line3{
+    -webkit-animation: R2ender 3.8s;
+    animation: R2ender 3.8s;
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
+    margin-bottom: 2%;
+}
+#page2line4{
+    -webkit-animation: R2ender 3.8s;
+    animation: R2ender 3.8s;
+    -webkit-animation-delay: 5.5s;
+    animation-delay: 5.5s;
+    margin-bottom: 10%;
+}
+#page2line5{
+    -webkit-animation: R2ender 3.8s;
+    animation: R2ender 3.8s;
+    -webkit-animation-delay: 7s;
+    animation-delay: 7s;
+    margin-bottom: 2%;
+}
+#page2line6{
+    -webkit-animation: R2ender 3.8s;
+    animation: R2ender 3.8s;
+    -webkit-animation-delay: 8.5s;
+    animation-delay: 8.5s;
+    margin-bottom: 2%;
+}
+#imgcontainer img{
+    height: 10%;
+    width: auto;
+}
+
+#start{
+    position: absolute;
+    left:30%;
+    width:40%;
+    bottom:8%;
+    opacity: 0;
+    -webkit-animation: R3ender 3.8s;
+    animation: R3ender 3.8s;
+    -webkit-animation-delay: 9.5s;
+    animation-delay: 9.5s;
+}
+form{
+    position: relative;
+    height: 40%;
+    z-index: 9999;
+}
+#inputZone{
+    position: absolute;
+    top:22%;
+    left: 6%;
+    width: 80%;
+    height: 60%;
+    margin-top: 0%;
+    background-color: transparent;
+    transform: rotate(-15deg);
+    transform-origin: 0% 0%;
+    margin: auto;
+}
+
+ input{
+    min-height: 25%;
+    min-width: 70px;
+    display: block;
+    background:transparent;
+    border:1px transparent;
+    width: 110%;
+    font-size: 1.1rem;
+    font-weight: 900;
+    margin-left: 10px;
+    }
+#nameInputZone{
+    border: 1.5px solid #ff5151 !important;
+    border-radius: 5px;
+    text-align: center;
+    float: left;
+}
+#submit{
+    display: none !important;
+    opacity: 0;
+}
+
+#wechatId{
+    position:absolute;
+    right: 25%;
+    bottom:-10%;
+    width: 40%;
+    text-align: right;
+    font-size: 1.2rem;
+}
+#f{
+    display: none;
+}
+
+.lastButton{
+    width: 40%;
+    float:left;
+    margin: 5%;
+}
+
+.lbtn1{
+    position: absolute;
+    width: 30%;
+    left: 15%;
+    bottom: 7%;
+}
+.lbtn2{
+    position: absolute;
+    width: 30%;
+    right: 10%;
+    bottom: 7%;
+}
+#writefor{
+    position: absolute;
+    bottom: 10%;
+    width: 30%;
+    left:35%;
+    display: none;
+    background: transparent;
+    animation: R3ender 3s;
+    opacity: 1;
+}
+#pictureDisplay{
+    position: relative;
+    height: 60%;
+    width: 80%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+@keyframes Render{
+    from {margin-top: 40px;opacity: 0;}
+    33% {margin-top: 00px;opacity: 1;}
+    70%{margin-top: 00px; opacity: 1;}
+    100%{opacity: 0;}
+}
+@-webkit-keyframes Render{
+    from {margin-top: 70px;opacity: 0;}
+    70%{margin-top: 00px; opacity: 1;}
+    100%{opacity: 0;}
+}
+@keyframes R2ender{
+    from {margin-top: 040px;opacity: 0;}
+    33% {margin-top: 00px;opacity: 1;}
+    70%{margin-top: 00px; opacity: 1;}
+    100%{opacity: 1;}
+}
+@-webkit-keyframes R2ender{
+    from {margin-top: 140px;opacity: 0;}
+    33% {margin-top: 00px;opacity: 1;}
+    70%{margin-top: 00px; opacity: 1;}
+    100%{opacity: 1;}
+}
+@keyframes R3ender{
+    from {opacity: 0;}
+    100%{opacity: 1;}
+}
+@-webkit-keyframes R3ender{
+    from {opacity: 0;}
+    100%{opacity: 1;}
+}
+*{padding: 0;margin: 0;}
+/*框架*/
+html{-ms-touch-action: none;}/* 禁止winphone默认触摸事件 */
+body{overflow: hidden;}
+.page-wrap{overflow:hidden}
+.page{display:none;width:100%;height:100%;overflow:hidden;position:absolute;top:0;left:0}
+.contain{width:100%;height:100%;display:none;z-index:0}
+.current .contain,.slide .contain{display:block}
+.current{display:block;z-index:1}
+.slide{display:block;z-index:2}
+.swipe{display:block;z-index:3;transition-duration:0ms!important;-webkit-transition-duration:0ms!important}

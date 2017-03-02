@@ -1,0 +1,89 @@
+<html>
+    <head>
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<meta charset="utf-8">
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="telephone=no" name="format-detection">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit">
+	<meta content="email=no" name="format-detection">
+        <title>share</title>
+        <meta charset="utf-8">
+        <style>
+            body{
+                overflow: hidden;
+                background: url('./assets/images/bg.jpg');
+            }
+            .contain{
+                
+            }
+            #post{
+                width: 100%;
+                height: 7%;
+            }
+            #postmark{
+                width: 50%;
+                float: right;
+            }
+            #preview{
+                width: 75%;
+                margin-top: -5%;
+            }
+            #rotate{
+                padding-right: 10%;
+                width: 90%;
+            transform: rotate(-15deg);
+            position: relative;
+            left: 15%;
+            top: 20%;
+            }
+            p{    font-family:"MicrosoftYaHei";
+                line-height: 1.2em;
+                font-size: 1.1em;
+            }
+            #wechatId{
+                display: inline-block;
+                float: right;
+                margin-right: 30%;
+                margin-top: 0px;
+            }
+            #nameInputZone{
+             border: 1.5px solid #ff5151;
+             border-radius: 5px;
+             display: inline;
+             padding: 5px;
+            }
+            #writefor{
+                width: 40%;
+                margin-left: 30%;
+                margin-top:15%;
+
+            }
+    </style>
+    </head>
+    <body>
+        <div class="contain">
+            <div id="post">
+			<img src="./assets/images/postmark.png" id="postmark">
+            </div>
+            <div id="rotate">
+					<p id="nameInputZone">小猫儿</p>
+					<p id="inputZone1">想把我们的女儿</p>
+					<p id="inputZone2">培养成你的性格</p>
+					<p id="inputZone3">这样就会多一个人和我一样幸运</p>
+					<img id="preview" name="pic" src="./assets/images/sample.png"/>
+				<p id="wechatId" ><{$nickname}></p>
+                </div>
+               <a href="./index.html"><img id="writefor" src="./assets/images/btnfinal.png"/> 
+               </a>
+        </div>
+
+        <script>
+            //禁止窗口的默认滑动
+document.ontouchmove = function(e) {
+  e.preventDefault();
+}
+        </script>
+    </body>
+</html>

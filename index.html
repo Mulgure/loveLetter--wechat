@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+	<meta content="yes" name="apple-mobile-web-app-capable">
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit">
+	<meta content="email=no" name="format-detection">
+	<link rel="stylesheet" href="./assets/style/style.css">
+	<title>527</title>
+</head>
+<body>
+<div id="pageContain" class="page-wrap">
+	<div class="page page0 current">
+		<div class="contain" id="page0contain">
+			<div id="block"></div>
+			<img src="./assets/images/001_01.png" alt="" id="page1line1">
+			<img src="./assets/images/001_02.png" alt="" id="page1line2">
+		</div>
+	</div>
+  <div class="page page1">
+		<div class="contain" id="page1contain">
+			<img src="./assets/images/rose.png" id="rose" class="page2element">
+			<div id="imgcontainer" align="center">
+				<img src="./assets/images/002_01.png" id="page2line1"class="page2element">
+				<img src="./assets/images/002_02.png" id="page2line2"class="page2element">
+				<img src="./assets/images/002_03.png" id="page2line3"class="page2element">
+				<img src="./assets/images/002_04.png" id="page2line4"class="page2element">
+				<img src="./assets/images/002_05.png" id="page2line5"class="page2element">
+				<img src="./assets/images/002_06.png" id="page2line6"class="page2element">
+			</div>
+			<img src="./assets/images/start.png" id="start" class="page2element">
+		</div>
+	</div>
+	<div class="page page2" id="page2">
+		<div class="contain">
+			<img src="./assets/images/postmark.png" id="postmark">
+			<div id="inputZone">
+				<form enctype="multipart/form-data" name="form1" id="form1">
+					<input type="text" value="小猫儿"onkeydown="changeLength(this);" ontouchstart="changeLength(this);" onmousedown="changeLength(this);"   style="width:72px;" id="nameInputZone">
+					<input type="text" value="想把我们的女儿" id="inputZone1">
+					<input type="text" value="培养出你一样的性格"id="inputZone2">
+					<input type="text" value="这样又会多一个人和我一样幸运"id="inputZone3">
+					<input id="f" type="file" name="f" onchange="change()"multiple="multiple"/>
+					<input type="submit"id="submit" >
+				</form>
+				<div id="pictureDisplay" class="window">
+					<img id="preview" style="width: 100%; position: relative; left: 0px; top: 0px;" alt="" class="dragme" name="pic" src="./assets/images/sample.png" style="width: 100%;position: relative;" onclick="fileSelect()"/>
+				</div>
+				<p id="wechatId" ><{$nickname}></p>
+			</div>
+			<a href="https://www.baidu.com/"><img src="./assets/images/btn1.png" class="lastButton lbtn1"></a>
+			<a href="https://www.baidu.com/"><img class="lastButton lbtn2" src="./assets/images/btn2.png" id="special" ></a>
+		</div>
+	</div>
+</div>
+</body>
+<script type="text/javascript" charset="utf-8" src="./assets/js/zepto.min.js"></script>
+<script type="text/javascript" src="./assets/js/fullPage.min.js"></script>
+<script>
+function fileSelect() {
+  document.getElementById("f").click();
+}
+
+function change() {
+  var pic = document.getElementById("preview");
+  var file = document.getElementById("f");
+  var ext = file.value.substring(file.value.lastIndexOf(".") + 1).toLowerCase();
+  // gif在IE浏览器暂时无法显示
+  if (ext != 'png' && ext != 'jpg' && ext != 'jpeg') {
+    alert("文件必须为图片！");
+    return;
+  }
+  // IE浏览器
+  if (document.all) {
+
+    file.select();
+    var reallocalpath = document.selection.createRange().text;
+    var ie6 = /msie 6/i.test(navigator.userAgent);
+    // IE6浏览器设置img的src为本地路径可以直接显示图片
+    if (ie6) pic.src = reallocalpath;
+    else {
+      // 非IE6版本的IE由于安全问题直接设置img的src无法显示本地图片，但是可以通过滤镜来实现
+      pic.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod='image',src=\"" + reallocalpath + "\")";
+      // 设置img的src为base64编码的透明图片 取消显示浏览器默认图片
+      pic.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==';
+    }
+  } else {
+    html5Reader(file);
+  }
+}
+
+function html5Reader(file) {
+  var file = file.files[0];
+  var reader = new FileReader();
+  reader.readAsDataURL(file);
+  console.log()
+  reader.onload = function(e) {
+    var pic = document.getElementById("preview");
+    pic.src = this.result;
+    console.log(this.result);
+  }
+}
+
+//禁止窗口的默认滑动
+document.ontouchmove = function(e) {
+  e.preventDefault();
+}
+
+function changeLength(textbox) {
+  textbox.style.width = parseInt(textbox.value.length) * 24 + "px";
+}
+
+//框架
+var runPage,
+  interval,
+  autoPlay;
+var index = 0;
+autoPlay = function(to) {
+  clearTimeout(interval);
+  interval = setTimeout(function() {
+    runPage.go(to);
+  }, 500);
+}
+
+runPage = new FullPage({
+
+  id: 'pageContain', // id of contain
+  slideTime: 800, // time of slide
+  continuous: false, // create an infinite feel with no endpoints
+  effect: { // slide effect
+    transform: {
+      translate: 'Y', // 'X'|'Y'|'XY'|'none'
+      scale: [1, 1], // [scalefrom, scaleto]
+      rotate: [0, 0] // [rotatefrom, rotateto]
+    },
+    opacity: [0, 1] // [opacityfrom, opacityto]
+  },
+  mode: 'wheel,touch', // mode of fullpage
+  easing: 'ease', // easing('ease','ease-in','ease-in-out' or use cubic-bezier like [.33, 1.81, 1, 1] )
+});
+window.onload = function handle(params) {
+  setTimeout(function() {
+    autoPlay(index + 1);
+  }, 3500);
+  document.getElementById("start").addEventListener("click", function starta(params) {
+    autoPlay(index + 2);
+  });
+
+  document.getElementById("page0contain").addEventListener("webkitAnimationEnd", function hide(params) {
+    this.style.opacity = "0";
+  });
+  for (i = 0; i < document.getElementsByClassName("page2element").length; i++)
+    document.getElementsByClassName("page2element")[i].addEventListener("webkitAnimationEnd", function hide(params) {
+      this.style.opacity = "1";
+    });
+ 
+  // document.getElementById("writefor").addEventListener("webkitAnimationEnd",function hide(params) {
+  //     this.style.opacity="1";
+  // });
+  /*
+			 document.getElementById("page2line1").addEventListener("webkitAnimationEnd",function hide(params) {
+			 this.style.opacity="1";
+	 });
+			 document.getElementById("page2line2").addEventListener("webkitAnimationEnd",function hide(params) {
+			 this.style.opacity="1";
+	 });
+			 document.getElementById("page2line3").addEventListener("webkitAnimationEnd",function hide(params) {
+			 this.style.opacity="1";
+	 });
+			 document.getElementById("page2line4").addEventListener("webkitAnimationEnd",function hide(params) {
+			 this.style.opacity="1";
+	 });
+			 document.getElementById("page2line5").addEventListener("webkitAnimationEnd",function hide(params) {
+			 this.style.opacity="1";
+	 });
+			 document.getElementById("page2line6").addEventListener("webkitAnimationEnd",function hide(params) {
+			 this.style.opacity="1";
+	 });
+			 document.getElementById("rose").addEventListener("webkitAnimationEnd",function hide(params) {
+			 this.style.opacity="1";
+	 });
+			 document.getElementById("start").addEventListener("webkitAnimationEnd",function hide(params) {
+			 this.style.opacity="1";
+	 });*/
+}
+
+var isdrag = false;
+var tx, x;
+$(function() {
+  document.getElementById("preview").addEventListener('touchend', function() {
+    isdrag = false;
+  });
+  document.getElementById("preview").addEventListener('touchstart', selectmouse);
+  document.getElementById("preview").addEventListener('touchmove', movemouse);
+});
+
+function movemouse(e) {
+  if (isdrag) {
+    var n = tx + e.touches[0].pageX - x;
+    m = ty + e.touches[0].pageY - y;
+    $("#preview").css({
+      "left": n,
+      "top": m
+    });
+    return false;
+  }
+}
+
+function selectmouse(e) {
+  isdrag = true;
+  tx = parseInt(document.getElementById("preview").style.left + 0);
+  ty = parseInt(document.getElementById("preview").style.top + 0);
+  x = e.touches[0].pageX;
+  y = e.touches[0].pageY;
+  return false;
+}
+e1 = document.getElementById('nameInputZone');
+e2 = document.getElementById('inputZone1');
+e3 = document.getElementById('inputZone2');
+e4 = document.getElementById('inputZone3');
+var flag1 = true;
+var flag2 = true;
+var flag3 = true;
+var flag4 = true;
+e1.onclick = function() {
+  if (flag1) {
+    e1.value = "";
+    flag1 = false;
+  }
+}
+
+e2.onclick = function() {
+  if (flag2) {
+    e2.value = "";
+    flag2 = false;
+  }
+}
+
+e3.onclick = function() {
+  if (flag3) {
+    e3.value = "";
+    flag3 = false;
+  }
+}
+e4.onclick = function() {
+  if (flag4) {
+    e4.value = "";
+    flag4 = false;
+  }
+}
+
+$('.lastButton.lbtn1').click(ajax)
+
+function ajax() {
+  pv = document.getElementById('preview')
+  iz1 = document.getElementById('nameInputZone');
+  iz2 = document.getElementById('inputZone1');
+  iz3 = document.getElementById('inputZone2');
+  iz4 = document.getElementById('inputZone3');
+  value1 = iz1.value;
+  value2 = iz2.value;
+  value3 = iz3.value;
+  value4 = iz4.value;
+  tp = parseFloat(pv.style.top);
+  lt = parseFloat(pv.style.left);
+
+  var formData = new FormData();
+  formData.append('image', document.getElementById('f').files[0]);
+  formData.append('title', value1);
+  formData.append('content1', value2);
+  formData.append('content2', value3);
+  formData.append('content3', value4);
+  formData.append('top', tp);
+  formData.append('left', lt);
+  $.ajax({
+    url: 'letter.php',
+    type: 'POST',
+    data: formData,
+    processData: false,
+    contentType: false,
+    success: function(data) {
+      console.log(data);
+    }
+  })
+}
+</script>
+</html>
